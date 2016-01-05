@@ -1,4 +1,4 @@
-﻿// -*- Mode: Javascript; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 2 -*-
+// -*- Mode: Javascript; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 2 -*-
 /*******************************************************************************
 	(C)2014+ TriMoon
 	Authors:	TriMoon <https://www.facebook.com/TriMoon>
@@ -7,16 +7,17 @@
 	See: http://creativecommons.org/licenses/by-nc-nd/4.0/
 *******************************************************************************/
 // ==UserScript==
-// @name       FB-App Widescreen
-// @namespace  https://www.facebook.com/TriMoon
-// @version    0.2
-// @description  Make the apps become fullwide by hiding the right-side adverts bar
-// @match      https://apps.facebook.com/*
-// @icon       https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/t1.0-1/p50x50/1234913_10203099716910993_2128955107_n.jpg
-// @author ©TriMoon™
+// @name        FB-App Widescreen
+// @namespace   https://www.facebook.com/TriMoon
+// @version     2016.01.05.b1
+// @description Make the apps become fullwide by hiding the right-side adverts bar
+// @match       *://apps.facebook.com/*
+// @icon        https://secure.gravatar.com/avatar/923250aa26f9030a60ec5a2a22f127fa
+// @author      ©TriMoon™
 // @grant none
 // @run-at document-start
-// @copyright  http://creativecommons.org/licenses/by-nc-nd/4.0/
+// @copyright   (C)2014+ TriMoon <https://www.facebook.com/TriMoon>
+// @license     CC BY-NC-ND 4.0;	http://creativecommons.org/licenses/by-nc-nd/4.0/
 // ==/UserScript==
 
 "use strict";
