@@ -1,21 +1,18 @@
-// -*- Mode: Javascript; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 2 -*-
-// JSHint options
-/* jshint -W004, -W100, newcap: false, browser: true, jquery: true, sub: true, bitwise: true, curly: true, evil: true, forin: true, freeze: true, globalstrict: true, immed: true, latedef: true, loopfunc: true, quotmark: single, strict: true, undef: true */
-/* global console, mediaWiki */
 /*******************************************************************************
-	(C)2016+ TriMoon
-	Authors:	TriMoon <https://www.facebook.com/TriMoon>
-
-	This work is licensed under a Creative Commons License !
-	See: http://creativecommons.org/licenses/by-nc-nd/4.0/
-*******************************************************************************/
+ * 	(C)2016+ TriMoon
+ * 	Authors:	TriMoon <https://www.facebook.com/TriMoon>
+ *
+ * 	This work is licensed under a Creative Commons License !
+ * 	See: http://creativecommons.org/licenses/by-nc-nd/4.0/
+ ******************************************************************************/
 // ==UserScript==
 // @name		wikEd
-// @version		2016.01.05.a2
+// @version		2016.06.14.b1
 // @description	A full-featured in-browser editor for Wikipedia and other MediaWikis. See https://en.wikipedia.org/wiki/User:Cacycle/wikEd
 // @namespace	https://en.wikipedia.org/wiki/User:TriMoon
 // @match		*://*.wikipedia.org/*
 // @match		*://*.wikia.com/*
+// @match		*://projectgorgon.com/w*
 // @icon		https://upload.wikimedia.org/wikipedia/commons/5/52/WikEd_logo39x40_animated.gif
 // @grant		none
 // @run-at		document-end
@@ -25,45 +22,56 @@
 // @author		©TriMoon™
 // ==/UserScript==
 
-// turn on ECMAScript 5 strict mode
-"use strict";
-
 (
-function ( mw, $ ){
-	function _onDomReady (){
-		var config = {
-			debug:		false,
-			name:		'wikipedia.wikEd',
-			site:		'//en.wikipedia.org', // mw.config.get("wgServer")
-			wikiScript:	'/w/index.php', // mw.util.wikiScript() / mw.config.get("wgScript")
-			article:	{
-				page:	'User:Cacycle/wikEd.js',
-				type:	'text/javascript'
-			}
-		};
-		// Set debug flag from URL "?debug=1"
-		if ((/(?:^\?|&)debug=1(?:&|$)/i).test(window.location.search)) {
-			config.debug = true;
-		}
-		if (config.debug){	mw.log(config.name + ': Start' ); }
-		mw.loader.addSource(
-			config.name,
-			config.site + config.wikiScript
-			+ '?title=' + config.article.page
-			+ '&action=raw&ctype=' + config.article.type
-		);
-		if (config.debug){	mw.log(config.name + ': Source= ' + mw.loader.getSource(config.name) ); }
-		if (config.debug){	mw.log(config.name + ': Loading' ); }
-		mw.loader.load(mw.loader.getSource(config.name));
-	/*
-		The below doesn't seem to work yet, somehow it doesn't load
-		Check: https://www.mediawiki.org/wiki/ResourceLoader/Modules#mw.loader.load
+function (scope, mw) {
+	'use strict';
 
-		mw.loader.load(config.name, 'text/javascript');
-	*/
-		if (config.debug){	mw.log(config.name + ': State= ' + mw.loader.state(config.name) ); }
-		if (config.debug){	mw.log(config.name + ': End' ); }
+	function _loadScript() {
+		var config = {
+						debug: false,
+						name: 'wikipedia.wikEd',
+						site: '//en.wikipedia.org', // mw.config.get("wgServer")
+						wikiScript:	'/w/index.php', // mw.util.wikiScript() / mw.config.get("wgScript")
+						article:	{
+							page:	'User:Cacycle/wikEd.js',
+							type:	'text/javascript'
+						}
+					},
+			scriptURL	= window.location.protocol
+						+ config.site + config.wikiScript
+						+ '?title=' + config.article.page
+						+ '&action=raw&ctype=' + config.article.type;
+
+		// Set debug flag from URL "?debug=true"
+		if (/debug=(\w+)/i.test(window.location.search) &&
+				/debug=(\w+)/i.exec(window.location.search)[1] == 'true'
+		) {
+			config.debug =	true;
+		}
+		if (config.debug){
+			mw.log(config.name + ': Start');
+			mw.log(config.name + ': Source= ' + scriptURL);
+		}
+		mw.loader.implement(
+			config.name,
+			[scriptURL],
+			{},
+			{},
+			{}
+		);
+		if (config.debug){
+			mw.log(config.name + ': State= ' + mw.loader.state(config.name));
+			mw.log(config.name + ': Loading');
+		}
+		mw.loader.load(config.name);
+//		mw.loader.load(scriptURL);
+	if (config.debug){
+			mw.log(config.name + ': State= ' + mw.loader.state(config.name));
+			mw.log(config.name + ': End');
+		}
 	}
-	$(_onDomReady);
+	if (scope.addEventListener){
+		scope.addEventListener('DOMContentLoaded', _loadScript);
+	}
 }
-)( mediaWiki, jQuery );
+)(document, mediaWiki);
