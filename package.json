@@ -1,0 +1,32 @@
+{
+	"name": "@trimoon/userscripts",
+	"description": "My Userscripts tobe hosted on openuserjs.org",
+	"readme": "README.md",
+	"version": "0.0.1",
+	"license": "CC-BY-NC-SA-4.0",
+	"homepage": "https://github.com/TriMoon/openuserjs.org",
+	"bugs": {
+		"url": "https://github.com/TriMoon/openuserjs.org/issues"
+	},
+	"private": true,
+	"dependencies": {},
+	"devDependencies": {
+		"eslint": "^2.11.1"
+	},
+	"optionalDependencies": {},
+	"author": {
+		"name": "TriMoon",
+		"email": "TriMoon@users.noreply.github.com",
+		"url": "https://github.com/TriMoon"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TriMoon/openuserjs.org.git"
+	},
+	"keywords": [
+		"userscripts",
+		"user scripts",
+		"Greasemonkey scripts",
+		"GM scripts"
+	]
+}
