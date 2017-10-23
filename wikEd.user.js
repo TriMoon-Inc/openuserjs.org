@@ -7,7 +7,7 @@
  ******************************************************************************/
 // ==UserScript==
 // @name		wikEd
-// @version		2016.06.14.b1
+// @version		2016.06.14.b2
 // @description	A full-featured in-browser editor for Wikipedia and other MediaWikis. See https://en.wikipedia.org/wiki/User:Cacycle/wikEd
 // @namespace	https://en.wikipedia.org/wiki/User:TriMoon
 // @match		*://*.wikipedia.org/*
@@ -65,7 +65,7 @@ function (scope, mw) {
 		}
 		mw.loader.load(config.name);
 //		mw.loader.load(scriptURL);
-	if (config.debug){
+		if (config.debug){
 			mw.log(config.name + ': State= ' + mw.loader.state(config.name));
 			mw.log(config.name + ': End');
 		}
