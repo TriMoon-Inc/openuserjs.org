@@ -4,9 +4,9 @@
 	"readme": "README.md",
 	"version": "0.0.1",
 	"license": "CC-BY-NC-SA-4.0",
-	"homepage": "https://github.com/TriMoon/openuserjs.org",
+	"homepage": "https://github.com/TriMoon-Inc/openuserjs.org",
 	"bugs": {
-		"url": "https://github.com/TriMoon/openuserjs.org/issues"
+		"url": "https://github.com/TriMoon-Inc/openuserjs.org/issues"
 	},
 	"private": true,
 	"dependencies": {},
@@ -17,11 +17,11 @@
 	"author": {
 		"name": "TriMoon",
 		"email": "TriMoon@users.noreply.github.com",
-		"url": "https://github.com/TriMoon"
+		"url": "https://github.com/orgs/TriMoon-Inc/people/TriMoon"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/TriMoon/openuserjs.org.git"
+		"url": "https://github.com/TriMoon-Inc/openuserjs.org.git"
 	},
 	"keywords": [
 		"userscripts",
